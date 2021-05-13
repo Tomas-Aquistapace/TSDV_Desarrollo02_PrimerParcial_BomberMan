@@ -6,7 +6,8 @@ public class PlayerMove : MonoBehaviour
 {
     public float moveSpeed = 5;
     public float moveDistance = 1;
-
+    public float distanceRay = 1;
+    
     public bool hableToMove;
 
     private Vector3 newUp;
@@ -26,28 +27,50 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
+        //Debug.DrawRay(transform.position, Vector3.forward, Color.red);
+        //Debug.DrawRay(transform.position, -Vector3.forward, Color.red);
+        //Debug.DrawRay(transform.position, Vector3.right, Color.red);
+        //Debug.DrawRay(transform.position, -Vector3.right, Color.red);
 
         MovementInput();
-
     }
 
     void MovementInput()
     {
-        if (Input.GetKeyDown("up") && hableToMove)
+        if (Input.GetKeyDown("up") && !CollisionChecks(Vector3.forward) && hableToMove)
         {
             StartCoroutine(MovePlayer(newUp));
         }
-        if (Input.GetKeyDown("down") && hableToMove)
+
+        if (Input.GetKeyDown("down") && !CollisionChecks(-Vector3.forward) && hableToMove)
         {
             StartCoroutine(MovePlayer(newDown));
         }
-        if (Input.GetKeyDown("left") && hableToMove)
+
+        if (Input.GetKeyDown("left") && !CollisionChecks(Vector3.right) && hableToMove)
         {
             StartCoroutine(MovePlayer(newLeft));
         }
-        if (Input.GetKeyDown("right") && hableToMove)
+
+        if (Input.GetKeyDown("right") && !CollisionChecks(-Vector3.right) && hableToMove)
         {
             StartCoroutine(MovePlayer(newRight));
+        }
+    }
+
+    bool CollisionChecks(Vector3 direction)
+    {
+        RaycastHit hit;
+
+        Ray collisionRay = new Ray(transform.position, direction);
+
+        if (Physics.Raycast(collisionRay, out hit, distanceRay))
+        {
+            return true; // Colisiono con algo
+        }
+        else
+        {
+            return false; // No colosiono con nada
         }
     }
 
