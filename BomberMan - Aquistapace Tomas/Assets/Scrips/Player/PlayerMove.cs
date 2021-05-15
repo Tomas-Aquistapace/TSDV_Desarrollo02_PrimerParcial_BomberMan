@@ -47,12 +47,12 @@ public class PlayerMove : MonoBehaviour
             StartCoroutine(MovePlayer(newDown));
         }
 
-        if (Input.GetKeyDown("left") && !CollisionChecks(Vector3.right) && hableToMove)
+        if (Input.GetKeyDown("left") && !CollisionChecks(-Vector3.right) && hableToMove)
         {
             StartCoroutine(MovePlayer(newLeft));
         }
 
-        if (Input.GetKeyDown("right") && !CollisionChecks(-Vector3.right) && hableToMove)
+        if (Input.GetKeyDown("right") && !CollisionChecks(Vector3.right) && hableToMove)
         {
             StartCoroutine(MovePlayer(newRight));
         }
