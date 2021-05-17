@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6130872192700248423}
   - component: {fileID: 6130872192700248420}
   - component: {fileID: 6130872192700248422}
+  - component: {fileID: 6130872191813275291}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -146,3 +147,18 @@ MonoBehaviour:
   bombPref: {fileID: 4719589933153185804, guid: 6f064b912fe79aa4199be884ad871d2e,
     type: 3}
   bombPlanted: 0
+--- !u!114 &6130872191813275291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6130872192700248417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c77aba0711694dc4fbc98e50feb8f3b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  points: 0
+  isDead: 0
