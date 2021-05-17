@@ -34,22 +34,24 @@ public class DetonateBomb : MonoBehaviour
     {
         Debug.Log("exploté");
 
-        CollisionChecks(Vector3.forward);
+        CollisionChecks(transform.position, Vector3.forward);
 
-        CollisionChecks(-Vector3.forward);
+        CollisionChecks(transform.position, - Vector3.forward);
 
-        CollisionChecks(-Vector3.right);
+        CollisionChecks(transform.position, - Vector3.right);
 
-        CollisionChecks(Vector3.right);
+        CollisionChecks(transform.position, Vector3.right);
+        
+        CollisionChecks(transform.position + Vector3.up, -Vector3.up);
         
         Destroy(this.gameObject);
     }
 
-    void CollisionChecks(Vector3 direction)
+    void CollisionChecks(Vector3 origin, Vector3 direction)
     {
         RaycastHit hit;
 
-        Ray collisionRay = new Ray(transform.position, direction);
+        Ray collisionRay = new Ray(origin, direction);
 
         if (Physics.Raycast(collisionRay, out hit, blastRange))
         {
@@ -60,7 +62,13 @@ public class DetonateBomb : MonoBehaviour
             {
                 PlayerStats playerGO = hit.transform.GetComponent<PlayerStats>();
 
-                playerGO.ReceiveDamage();
+                playerGO.TakeDamage();
+            }
+            else if (hit.transform.tag == "DestroyableWall")
+            {
+                DestroyWall wallGO = hit.transform.GetComponent<DestroyWall>();
+
+                wallGO.TakeDamage();
             }
         }
         else

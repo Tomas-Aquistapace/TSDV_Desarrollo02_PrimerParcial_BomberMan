@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStats : MonoBehaviour
+public class PlayerStats : MonoBehaviour , Destroyable
 {
     public int lifes = 3;
     public int points;
@@ -14,11 +14,11 @@ public class PlayerStats : MonoBehaviour
         isDead = false;
     }
 
-    public void ReceiveDamage()
+    public void TakeDamage()
     {
         SubtractLife();
 
-        if(lifes <= 0)
+        if (lifes <= 0)
             SetIsDead(true);
     }
 
