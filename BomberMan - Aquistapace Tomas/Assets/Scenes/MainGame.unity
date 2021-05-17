@@ -490,6 +490,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6130872191813275291, guid: e064aa1d2819c5243a59a5f2f6e0f5db,
+        type: 3}
+      propertyPath: invulnerabilityTime
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6130872192700248417, guid: e064aa1d2819c5243a59a5f2f6e0f5db,
         type: 3}
       propertyPath: m_Name
